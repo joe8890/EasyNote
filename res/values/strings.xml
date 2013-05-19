@@ -4,6 +4,8 @@
     <string name="app_name">easyNote</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="title_title">标题</string>
+    <string name="title_content">内容</string>
     <string name="title_activity_editor">EditorActivity</string>
 
 </resources>

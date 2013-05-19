@@ -1,17 +1,17 @@
 package com.joe.easynote.util;
 
+import android.content.Context;
+
+import com.joe.easynote.db.DBHelper;
+
 public class DataBaseContext {
-	private static DataBaseContext database;
+	private static DBHelper database;
 	private static Object INSTANCE_LOCK = new Object();
 
-	private DataBaseContext() {
-
-	}
-
-	public static DataBaseContext getInstance() {
+	public static DBHelper getInstance(Context context) {
 		synchronized (INSTANCE_LOCK) {
 			if (database == null) {
-				database = new DataBaseContext();
+				database = new DBHelper(context);
 			}
 			return database;
 		}
