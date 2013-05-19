@@ -8,10 +8,10 @@ public class NoteInfo implements Serializable {
 	public static final String TITLE = "_title";
 	public static final String CONTENT = "_content";
 
-	public String id;
-	public String datetime;
-	public String title;
-	public String content;
+	private String id;
+	private String datetime;
+	private String title;
+	private String content;
 
 	public String getId() {
 		return this.id;

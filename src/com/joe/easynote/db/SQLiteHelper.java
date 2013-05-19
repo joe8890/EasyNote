@@ -6,9 +6,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
-	public static String TB_NAME = "notes";
+	
+
 
 	public SQLiteHelper(Context context, String name, CursorFactory factory,
 			int version) {
@@ -19,12 +21,13 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
-		db.execSQL("CREATE TABLE IF NOT EXISTS " + TB_NAME + "(" + 
+		db.execSQL("CREATE TABLE IF NOT EXISTS " + DBHelper.TB_NAME + "(" + 
 				NoteInfo.ID+ " integer primary key," + 
 				NoteInfo.DATETIME + " datetime"+ 
 				NoteInfo.TITLE + " varchar(50)" + 
 				NoteInfo.CONTENT + " text"
 				+ ")");
+		Log.e("database", "created");
 	}
 
 	@Override
