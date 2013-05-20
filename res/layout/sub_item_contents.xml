@@ -6,14 +6,14 @@
 "
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textView_listview_title"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_weight="3"
         android:gravity="center|left" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView_listview_datetime"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_weight="1"

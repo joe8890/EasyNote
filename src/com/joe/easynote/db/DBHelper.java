@@ -40,10 +40,10 @@ public class DBHelper {
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		try {
 			Cursor cursor = db.query(TB_NAME, null, null, null, null,
-					NoteInfo.ID, " DESC");
+					null, NoteInfo.ID+" DESC");
 			try {
 				cursor.moveToFirst();
-				while (!cursor.isAfterLast() && cursor.getString(1) != null) {
+				while (!cursor.isAfterLast() && cursor.getString(2) != null) {
 					NoteInfo note = new NoteInfo();
 					note.setId(cursor.getString(0));
 					note.setDateTime(cursor.getString(1));
