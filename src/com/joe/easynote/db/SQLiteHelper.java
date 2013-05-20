@@ -14,7 +14,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
 	public SQLiteHelper(Context context, String name, CursorFactory factory,
 			int version) {
-		super(context, name, factory, version);
+		super(context, name, factory, 1);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -23,8 +23,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 		// TODO Auto-generated method stub
 		db.execSQL("CREATE TABLE IF NOT EXISTS " + DBHelper.TB_NAME + "(" + 
 				NoteInfo.ID+ " integer primary key," + 
-				NoteInfo.DATETIME + " datetime"+ 
-				NoteInfo.TITLE + " varchar(50)" + 
+				NoteInfo.DATETIME + " datetime,"+ 
+				NoteInfo.TITLE + " varchar(50)," + 
 				NoteInfo.CONTENT + " text"
 				+ ")");
 		Log.e("database", "created");

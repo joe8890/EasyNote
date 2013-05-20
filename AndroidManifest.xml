@@ -10,9 +10,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/easynote_icon_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:name="com.joe.easynote.util.EasyNoteApplication" >
         <activity
             android:name="com.joe.easynote.activitys.MainActivity"
             android:label="@string/app_name" >

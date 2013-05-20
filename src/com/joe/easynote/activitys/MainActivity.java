@@ -1,6 +1,7 @@
 package com.joe.easynote.activitys;
 
 import com.joe.easynote.R;
+import com.joe.easynote.util.EasyNoteApplication;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -19,13 +20,15 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		//DataBaseContext.getInstance(this);
+		((EasyNoteApplication)this.getApplication()).getDBHelper(this);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_main, menu);
-		menu_item_new = (MenuItem) menu.findItem(R.id.menu_new);
+		menu_item_new = menu.findItem(R.id.menu_new);
 		menu_item_new.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 
 			@Override
@@ -38,7 +41,7 @@ public class MainActivity extends Activity {
 
 		});
 
-		menu_item_discard = (MenuItem) menu.findItem(R.id.menu_discard);
+		menu_item_discard = menu.findItem(R.id.menu_discard);
 		menu_item_discard
 				.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 
