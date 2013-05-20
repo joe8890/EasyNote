@@ -19,7 +19,7 @@ public class DBHelper {
 	public static int DB_VERSION = 1;
 	public static String TB_NAME = "notes";
 	//private SQLiteDatabase db;
-	private final SQLiteHelper dbHelper;
+	private final SQLiteHelper dbHelper;	//私有不可变引用，保证对象只被创建一次
 
 	public DBHelper(Context context) {
 		// 定义一个SQLite数据库
