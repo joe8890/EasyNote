@@ -15,6 +15,9 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -24,35 +27,60 @@ public class MainActivity extends Activity {
 	private MenuItem menu_item_discard;
 	private MenuItem menu_item_search;
 	private ListView listview_note;
+	private List<Map<String, Object>> notelist;
+	private List<NoteInfo> notes;
+
+	// private easyNoteAdapter adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		listview_note = (ListView) this.findViewById(R.id.listView_note);
-
-		//暂时用一个简单的adapter，后续优化
-		SimpleAdapter adapter = new SimpleAdapter(this, getData(),
-				R.layout.sub_item_contents, new String[] { "title" },
-				new int[] { R.id.textView_listview_title });
+		listview_note = (ListView) this
+				.findViewById(R.id.listView_note);
+		notelist=this.getData();
+		// 暂时用一个简单的adapter，后续优化
+		SimpleAdapter adapter = new SimpleAdapter(this, notelist,
+				R.layout.sub_item_contents,
+				new String[] { "datetime", "title" }, new int[] {
+						R.id.textView_listview_datetime,
+						R.id.textView_listview_title });
 		listview_note.setAdapter(adapter);
+		listview_note.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View view, int index,
+					long arg3) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(MainActivity.this,EditorActivity.class);
+				Bundle bundle=new Bundle();
+				bundle.putSerializable("noteinfo", notes.get(index));
+				intent.putExtras(bundle);
+				intent.putExtra("mode", 1);
+				MainActivity.this.startActivity(intent);
+				//view
+			}
+			
+		});
 		// DataBaseContext.getInstance(this);
 	}
 
-	
 	/**
 	 * 先暂时取出title，未完待续
+	 * 
 	 * @return
 	 */
 	private List<Map<String, Object>> getData() {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		Map<String, Object> map = new HashMap<String, Object>();
 		NoteAction na = new NoteAction(this);
-		List<NoteInfo> notelist = na.getNoteList();
-		for (int i = 0; i < notelist.size(); i++) {
-			NoteInfo note = notelist.get(i);
+		notes = na.getNoteList();
+		for (int i = 0; i < notes.size(); i++) {
+			NoteInfo note = notes.get(i);
 			map = new HashMap<String, Object>();
+			map.put("datetime", note.getDateTime());
 			map.put("title", note.getTitle());
+			map.put("content", note.getContent());
 			// map.put("content", note.getContent());
 			list.add(map);
 		}

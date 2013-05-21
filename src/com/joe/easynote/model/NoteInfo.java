@@ -3,6 +3,10 @@ package com.joe.easynote.model;
 import java.io.Serializable;
 
 public class NoteInfo implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5741609483620569449L;
 	public static final String ID = "_id";
 	public static final String DATETIME = "_datetime";
 	public static final String TITLE = "_title";
